@@ -1,25 +1,27 @@
 import NextAuth from "next-auth";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import GithubProvider from "next-auth/providers/github";
-import {prisma} from "./lib/index";
+import GitHubProvider from "next-auth/providers/github";
+import { prisma } from "@/lib";
 
 if(!process.env.GITHUB_CLIENT_ID || !process.env.GITHUB_CLIENT_SECRET){
-    throw new Error("Please define the CLIENT_ID and CLIENT_SECRET environment variables inside .env.local");
-}   
-export const {handlers:{GET,POST}, auth, signIn, signOut} = NextAuth({
+    throw new Error('Missing github client id or client secret');
+}
+
+export const {handlers:{GET, POST}, auth, signIn, signOut} = NextAuth({
     adapter: PrismaAdapter(prisma),
     providers: [
-        GithubProvider({
+        GitHubProvider({
             clientId: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET,
-        }),
+            clientSecret: process.env.GITHUB_CLIENT_SECRET
+        })
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
-        async session({ session, user }){
-            if(session && user){
-                session.user.id = user.id;
+        async session({ user, session }) {
+            if (session && user) {
+                session.user.id = user.id
             }
             return session;
-        }  
-    }    
+        }
+    }
 })
