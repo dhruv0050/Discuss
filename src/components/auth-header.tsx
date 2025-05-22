@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/popover"
 import { Separator } from './ui/separator'
 import { Button } from './ui/button'
-import { signIn } from "@/app/actions/sign-in"
-import { signOut } from "@/app/actions/sign-out"
+import { signIn } from "@/actions/sign-in"
+import { signOut } from "@/actions/sign-out"
 import { auth } from '@/auth'
 
 const AuthHeader = () => {
