@@ -16,7 +16,7 @@ import { auth } from '@/auth'
 
 const AuthHeader = () => {
     const session = useSession()
-    // if(!session.data?.user) return null
+    if(session.status === "loading") return null
 
     let authContent: React.ReactNode
 
