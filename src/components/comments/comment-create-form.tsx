@@ -25,15 +25,15 @@ const CommentCreateForm: React.FC<CommentCreateFormProps> = ({ postId, parentId,
                             placeholder='Write a comment...' className='bg-gray-100 focus-visible:ring-0' />
                         {formState.errors.content && <p className='text-sm text-red-600'>{formState.errors.content}</p>}
                         {formState.errors.formError && <div className='border border-red-600 bg-red-200 p-2 rounded'>{formState.errors.formError}</div>}
-                        <Button
-                            disabled={isPending}
-                            type='submit' size={'sm'}
-                            variant={'secondary'} className='mt-2'>
-                            isPending ? (<>
-                                <Loader2 />
-                                "Please wait"
-                            </>
-                            ) : "Save"
+                        <Button disabled={isPending} size={"sm"} variant={"secondary"}>
+                            {isPending ? (
+                                <>
+                                    <Loader2 />
+                                    Please wait
+                                </>
+                            ) : (
+                                "Save"
+                            )}
                         </Button>
                     </form>
                 )
