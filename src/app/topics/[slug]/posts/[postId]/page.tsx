@@ -1,4 +1,5 @@
 import CommentCreateForm from '@/components/comments/comment-create-form';
+import CommentList from '@/components/comments/comment-list';
 import PostShow from '@/components/posts/post-show';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft } from 'lucide-react';
@@ -20,6 +21,7 @@ const PostShowPage: React.FC<PostShowPageProps> = async ({ params }) => {
       </Link>
       <PostShow postId={postId} />
       <CommentCreateForm postId={postId} startOpen/>
+      <CommentList postId={postId}/>
     </div>
   )
 }
