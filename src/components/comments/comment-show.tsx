@@ -26,7 +26,7 @@ const CommentShow : React.FC<CommentShowProps> = async ({postId, commentId}) => 
             </Avatar>
             <div className='flex-1 space-y-1'>
                 <p className='text-gray-500 text-sm font-medium'>{comment.user.name}</p>
-                <p className='text-gray-800'>{comment.content}</p>
+                <p className='text-white'>{comment.content}</p>
                 <CommentCreateForm postId={comment.postId} parentId={comment.id} />
             </div>
         </div>
