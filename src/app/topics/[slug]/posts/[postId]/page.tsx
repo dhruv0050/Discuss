@@ -19,7 +19,7 @@ const PostShowPage: React.FC<PostShowPageProps> = async ({ params }) => {
         </Button>
       </Link>
       <PostShow postId={postId} />
-      <CommentCreateForm />
+      <CommentCreateForm postId={postId} startOpen/>
     </div>
   )
 }
